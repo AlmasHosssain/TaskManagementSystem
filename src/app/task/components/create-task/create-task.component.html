@@ -1,0 +1,91 @@
+<mat-toolbar class="mb-4">
+    <div fxLayout="row" fxLayoutGap="22rem">
+        <div>
+            <h1>{{toolBarHeading}}</h1>
+        </div>
+        <div tabindex="-1">
+            <button (click)="closePopUp()" type="button" mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+        <mat-icon>clear</mat-icon>
+      </button>
+        </div>
+    </div>
+</mat-toolbar>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="task" (ngSubmit)="onSubmit()">
+
+        <div fxLayout="row" fxLayoutGap="100px">
+            <div fxLayout="column">
+                <div class="example-container">
+                    <mat-form-field>
+                        <mat-label>Enter your task title</mat-label>
+                        <input autocomplete="off" required matInput placeholder="Enter your name please" formControlName="title">
+                    </mat-form-field>
+                </div>
+                <div class="example-container">
+                    <mat-form-field>
+                        <mat-label>Enter your test description</mat-label>
+                        <input autocomplete="off" required matInput placeholder="Enter your email please" formControlName="description">
+                    </mat-form-field>
+                </div>
+                <div class="example-container">
+                    <mat-form-field>
+                        <mat-label>Comments here..</mat-label>
+                        <input autocomplete="off" required formControlName="comments" matInput placeholder="Comments here..">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="column">
+                <div>
+                    <mat-form-field>
+                        <mat-label>Task Label</mat-label>
+                        <mat-select formControlName="taskLabel">
+                            <mat-option value="Todo">
+                                Todo
+                            </mat-option>
+                            <mat-option value="Inprogress ">
+                                Inprogress
+                            </mat-option>
+                            <mat-option value="Completed">
+                                Completed
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <label>Task priority :</label><br>
+                <div fxLayout="row">
+                    <div class="form-check form-check-inline">
+                        <input required class="form-check-input" formControlName="taskPriority" type="radio" value="High"><label class="form-check-label">
+          High
+  </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input required class="form-check-input" formControlName="taskPriority" type="radio" value="Medium"><label class="form-check-label">
+          Medium
+  </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input required class="form-check-input" formControlName="taskPriority" type="radio" value="Low"><label class="form-check-label">
+          Low
+  </label>
+                    </div>
+
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Due Date</mat-label>
+                        <input autocomplete="off" matInput formControlName="dueDate" required [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button class="mr-2" color="primary" mat-raised-button>SUBMIT</button>
+                    <button type="button" (click)="clearForm()" color="warn" mat-raised-button>CLEAR</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

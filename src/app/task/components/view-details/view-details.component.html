@@ -1,0 +1,30 @@
+<mat-card [style.backgroundColor]="backGroundColorSet ? 'rgb(243, 12, 89)' : '#34a5eb'" class="p-3">
+    <mat-toolbar class="mb-2">
+        <div fxLayout="row" fxLayoutGap="17rem">
+            <div>
+                <span>DETAILS ABOUT THE TASK</span>
+            </div>
+            <div tabindex="-1">
+                <button (click)="closePopUp()" type="button" mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+    <mat-icon>clear</mat-icon>
+  </button>
+            </div>
+        </div>
+    </mat-toolbar>
+    <h1 *ngIf="backGroundColorSet" class="text-center"><button mat-raised-button color="primary">Dadeline has been passed.</button> </h1>
+    <h1 *ngIf="!backGroundColorSet" class="text-center"><button mat-raised-button color="accent">Complete your task.</button> </h1>
+    <div class="main p-3" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="120px">
+        <div>
+            <h2> Task Title : {{data.title}} </h2>
+            <h3> Task Label :{{data.taskLabel}} </h3>
+            <h3> Task Description : {{data.description}} </h3>
+        </div>
+        <div>
+            <h2> Task Priority : {{data.taskPriority}}</h2>
+            <h3>Comments : {{data.comments}} </h3>
+            <h3> Due Date :
+                <b>{{data.dueDate | date : "shortDate"}}</b>
+            </h3>
+        </div>
+    </div>
+</mat-card>
